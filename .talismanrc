@@ -1,3 +1,5 @@
 fileignoreconfig:
 - filename: package-lock.json
   checksum: dda34985c3657e2c9826b1b6906de4fd5761e64f07b0d141ab97d0c342152ffc
+- filename: PICK_BASIC_Reference_Manual_Feb1985.pdf
+  checksum: 34bba42b329fb20f049371f5adfbce3cd843c67dbd5a03cfe4b94a7345bc111f
