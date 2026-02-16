@@ -1,0 +1,94 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Pick BASIC",
+  "scopeName": "source.pickbasic",
+  "patterns": [
+    { "include": "#comment" },
+    { "include": "#string" },
+    { "include": "#number" },
+    { "include": "#keyword-control" },
+    { "include": "#keyword-declaration" },
+    { "include": "#keyword-io" },
+    { "include": "#keyword-file" },
+    { "include": "#keyword-operator" },
+    { "include": "#function" },
+    { "include": "#label" },
+    { "include": "#variable" }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "name": "comment.line.pickbasic",
+          "match": "^\\s*[*!].*$"
+        },
+        {
+          "name": "comment.line.pickbasic",
+          "match": "(?<=\\s)[*!].*$"
+        },
+        {
+          "name": "comment.line.rem.pickbasic",
+          "match": "(?i)^\\s*REM\\b.*$"
+        }
+      ]
+    },
+    "string": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.pickbasic",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": []
+        },
+        {
+          "name": "string.quoted.single.pickbasic",
+          "begin": "'",
+          "end": "'",
+          "patterns": []
+        },
+        {
+          "name": "string.quoted.backslash.pickbasic",
+          "begin": "\\\\",
+          "end": "\\\\",
+          "patterns": []
+        }
+      ]
+    },
+    "number": {
+      "match": "\\b\\d+(\\.\\d+)?\\b",
+      "name": "constant.numeric.pickbasic"
+    },
+    "keyword-control": {
+      "match": "(?i)\\b(IF|THEN|ELSE|END|FOR|TO|STEP|NEXT|WHILE|UNTIL|DO|LOOP|REPEAT|BEGIN|CASE|GOTO|GO|GOSUB|ON|RETURN|STOP|ABORT)\\b",
+      "name": "keyword.control.pickbasic"
+    },
+    "keyword-declaration": {
+      "match": "(?i)\\b(DIM|DIMENSION|COMMON|COM|EQUATE|EQU|SUBROUTINE|SUB|CALL|NULL|CLEAR|PRECISION)\\b",
+      "name": "keyword.other.declaration.pickbasic"
+    },
+    "keyword-io": {
+      "match": "(?i)\\b(PRINT|CRT|INPUT|INPUT@|INPUTERR|INPUTNULL|INPUTTRAP|DATA|PROMPT|PAGE|HEADING|FOOTING|PRINTER|BREAK|ECHO)\\b",
+      "name": "keyword.other.io.pickbasic"
+    },
+    "keyword-file": {
+      "match": "(?i)\\b(OPEN|READ|READU|READV|READVU|WRITE|WRITEU|WRITEV|WRITEVU|DELETE|READNEXT|READT|WRITET|SELECT|LOCK|UNLOCK|RELEASE|CLEARFILE|MATREAD|MATREADU|MATWRITE|MATWRITEU|LOCATE|FROM|SETTING|IN|LOCKED|LITERALLY|ERROR|EXECUTE|CAPTURING|RETURNING|CHAIN|ENTER|SLEEP|RQM|MAT|PROCREAD|PROCWRITE|REWIND|WEOF)\\b",
+      "name": "keyword.other.file.pickbasic"
+    },
+    "keyword-operator": {
+      "match": "(?i)\\b(AND|OR|NOT|CAT|MATCH|MATCHES|EQ|NE|LT|GT|LE|GE)\\b",
+      "name": "keyword.operator.pickbasic"
+    },
+    "function": {
+      "match": "(?i)\\b(ABS|ALPHA|ASCII|CHAR|COL1|COL2|CONVERT|COS|COUNT|DATE|DCOUNT|DELETE|DOWNCASE|DQUOTE|DTX|EBCDIC|EXCHANGE|EXP|EXTRACT|FIELD|FIELDSTORE|FMT|FOLD|ICONV|INDEX|INMAT|INSERT|INT|LEN|LN|MOD|NOT|NUM|OCONV|PWR|REPLACE|RND|SEQ|SIN|SOUNDEX|SPACE|SQRT|STATUS|STR|SYSTEM|TAN|TIME|TIMEDATE|TRIM|TRIMB|TRIMF|UPCASE|XTD)\\s*(?=\\()",
+      "name": "entity.name.function.pickbasic"
+    },
+    "label": {
+      "match": "^\\s*\\d+(?=\\s|$)",
+      "name": "entity.name.label.pickbasic"
+    },
+    "variable": {
+      "match": "\\b[A-Za-z_][A-Za-z0-9_.]*\\b",
+      "name": "variable.other.pickbasic"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+SUBROUTINE INVOICE.CALC(CUST.ID, INV.REC, TOTAL)
+    EQU AM TO CHAR(254)
+    EQU VM TO CHAR(253)
+    EQU TAX.RATE TO 0.08
+    DIM LINE.ITEMS(100)
+    COMMON /SHARED/ ERR.MSG
+
+    PRECISION 2
+    TOTAL = 0
+    LINE.COUNT = DCOUNT(INV.REC, AM)
+
+    FOR I = 1 TO LINE.COUNT
+        QTY = FIELD(INV.REC<I>, VM, 1)
+        PRICE = FIELD(INV.REC<I>, VM, 2)
+        IF NUM(QTY) AND NUM(PRICE) THEN
+            SUBTOTAL = QTY * PRICE
+            TOTAL = TOTAL + SUBTOTAL
+        END ELSE
+            GOSUB 9000
+        END
+    NEXT I
+
+    TAX = TOTAL * TAX.RATE
+    TOTAL = TOTAL + TAX
+
+    OPEN "", "INVOICES" TO INV.FILE ELSE
+        ERR.MSG = "Cannot open INVOICES file"
+        RETURN
+    END
+
+    WRITE INV.REC ON INV.FILE, CUST.ID
+
+    CRT "Invoice total: " : OCONV(TOTAL, "MR2")
+    CRT "Tax: " : OCONV(TAX, "MR2")
+    RETURN
+
+9000
+    ERR.MSG = "Invalid line item at position " : I
+    PRINT ERR.MSG
+    RETURN
+END
