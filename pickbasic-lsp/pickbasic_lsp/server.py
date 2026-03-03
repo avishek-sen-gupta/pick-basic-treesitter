@@ -28,7 +28,7 @@ from lsprotocol.types import (
     TextDocumentSyncKind,
 )
 
-from pygls.server import LanguageServer
+from pygls.lsp.server import LanguageServer
 
 from . import completion as comp_mod
 from . import definition as def_mod
