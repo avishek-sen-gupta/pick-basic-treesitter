@@ -6,4 +6,4 @@ fileignoreconfig:
 - filename: pickbasic-lsp/editors/vscode/package-lock.json
   checksum: 8818767320cd48f53c0c1eff7ef673458723fb69751558c7bf031815e4842173
 - filename: pickbasic-lsp/poetry.lock
-  checksum: 7c35eeee285ecbe2a944156433b59da32eb8ba86dc22408471380e4bac91d180
+  checksum: cff7830b7c94a63f9ed1f181d0f44e3a078c53992a1ea86cb5737fcbb661c8d6
