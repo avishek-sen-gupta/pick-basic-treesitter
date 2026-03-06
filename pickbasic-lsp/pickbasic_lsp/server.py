@@ -21,6 +21,7 @@ from lsprotocol.types import (
     Hover,
     HoverParams,
     Location,
+    PublishDiagnosticsParams,
     ReferenceParams,
     SemanticTokens,
     SemanticTokensLegend,
@@ -60,7 +61,9 @@ def _publish_diagnostics(ls: LanguageServer, uri: str):
     if tree is None:
         return
     diags = diag_mod.get_diagnostics(tree.root_node)
-    ls.publish_diagnostics(uri, diags)
+    ls.text_document_publish_diagnostics(
+        PublishDiagnosticsParams(uri=uri, diagnostics=diags)
+    )
 
 
 @server.feature(TEXT_DOCUMENT_DID_OPEN)
